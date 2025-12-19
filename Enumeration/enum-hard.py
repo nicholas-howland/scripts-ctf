@@ -1,3 +1,5 @@
+## silly script that I wrote before I knew about ffuf's recursive features.
+
 import requests
 
 def appendURL(base,page):
